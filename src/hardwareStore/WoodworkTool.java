@@ -13,6 +13,6 @@ public class WoodworkTool extends Tool
 	}
 	public int getCategory()
 	{
-		return CategoryTypes.WOODWORK; 
+		return CategoryType.WOODWORK; 
 	}
 }
