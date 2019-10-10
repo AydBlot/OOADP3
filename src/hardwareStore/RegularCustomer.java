@@ -44,14 +44,18 @@ public class RegularCustomer extends Customer { //rent one to three tools each t
 	
 	@Override
 	protected RentalRecord rent() {
+		// Determine number of tools to rent
 		int numTools = this.howMany();
+		// Create tool and option lists
+		ArrayList<RentalOption> options = null;
 		ArrayList<Tool> rentList = null;
+		// Look at the current store inventory
 		ArrayList<Tool> storeInventory = store.getInventory();
-		// Loop 
+		// Choose your tools and options
 		for(int i = 1; i <= numTools; i++) {
 			rentList.add(storeInventory.get(storeInventory.size()-i));
 		}
-		RentalRecord rentItems = new RentalRecord(rentList, this.howLong());
+		RentalRecord rentItems = new RentalRecord(rentList, options, this.howLong(), this.day);
 		return rentItems;
 	}
 }
