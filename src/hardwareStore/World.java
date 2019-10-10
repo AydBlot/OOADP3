@@ -8,7 +8,6 @@ public class World
 	private ArrayList<Store> stores;
 	private ArrayList<Customer> customers;
 	
-	
 	public World()
 	{
 		currentDay = 0;
@@ -19,7 +18,7 @@ public class World
 	 */
 	public void startNewDay()
 	{
-		// Increment the current day
+		// Increment the day counter
 		currentDay++;
 		
 		// Loop through each store
@@ -32,12 +31,14 @@ public class World
 	
 	/**
 	 * Run the simulation for a given number of days. This calls the
-	 * startNewDay function days number of times.
+	 * startNewDay function days number of times. If run multiple times, 
+	 * will continue
 	 * @param days The number of days to run the simulation for.
 	 */
 	public void runSimulation(int days)
 	{
-		while(currentDay < days)
+		int startDay = currentDay;
+		while(currentDay - startDay < days)
 		{
 			startNewDay();
 		}
