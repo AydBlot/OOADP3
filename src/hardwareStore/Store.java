@@ -10,7 +10,6 @@ public class Store extends Observable
 	private ArrayList<RentalRecord> activeRentals;
 	private ArrayList<RentalRecord> archivedRentals;
 	private String name;
-	private int day = 1;
 	
 	public Store(String name)
 	{
@@ -79,14 +78,5 @@ public class Store extends Observable
 		}
 		
 		return total;
-	}
-	
-	public int getDay()
-	{
-		return this.day;
-	}
-	public void incrementDay()
-	{
-		this.day++;
 	}
 }
