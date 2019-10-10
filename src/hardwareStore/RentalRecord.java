@@ -4,19 +4,25 @@ import java.util.*;
 public class RentalRecord{
 	private String rentalID;
 	private int daysToRentTool;
+	private int dayRented;
 	private ArrayList<Tool> ToolsToRent;
 	private int orderCost;
 	private ArrayList<RentalOption> OptionList;
 	
-	public RentalRecord(ArrayList<Tool> OrderedTools, int DaysToRent){
+	public RentalRecord(ArrayList<Tool> OrderedTools, int DaysToRent, int today){
 		this.ToolsToRent = OrderedTools;
 		this.daysToRentTool = DaysToRent;
 		this.rentalID = UUID.randomUUID().toString();
+		this.dayRented = today;
 	}
 	
 	public String getOrderID()
 	{
 		return this.rentalID;
+	}
+	
+	public int getDayRented() {
+		return this.dayRented;
 	}
 	
 	public void setOptions(ArrayList<RentalOption> Options) {

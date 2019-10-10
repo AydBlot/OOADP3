@@ -19,6 +19,7 @@ public class Store extends Observable
 		this.archivedRentals = new ArrayList<RentalRecord>();
 		this.name = name;
 	}
+	
 	public Store(String name, ArrayList<Tool> inventory)
 	{
 		this.inventory = new ArrayList<Tool>(inventory);
@@ -27,17 +28,41 @@ public class Store extends Observable
 		this.name = name;
 	}
 	
+	public void processReturnedTools() {
+		
+	}
+	
 	public void addToolToInventory(Tool t)
 	{
 		this.inventory.add(t);
 	}
+	
 	public void removeToolFromInventory(Tool t)
 	{
 		this.inventory.remove(t);
 	}
+	
 	public ArrayList<Tool> getInventory()
 	{
 		return this.inventory;
+	}
+	
+	//called at the beginning of every day
+	public void checkRentalRecords(int currentDay) {
+		for (RentalRecord record: this.activeRentals){
+			int daysPassed = currentDay - record.getDayRented();
+			if ( daysPassed == record.getDaysToRentTool()) {
+				//Notify the observer of the ID that expired
+				//and remove it from the active rentals
+				notifyObservers(record.getOrderID());
+				activeRentals.remove(record);
+				archivedRentals.add(record);
+			}
+		}
+	}
+	
+	public void processReturn(Tool returnedTool) {
+		inventory.add(returnedTool);
 	}
 	
 	public void startRental(RentalRecord toStart)
@@ -47,6 +72,7 @@ public class Store extends Observable
 		// Add the RentalRecord to the list of active rentals
 		activeRentals.add(toStart);
 	}
+	
 	public void endRental(RentalRecord toEnd)
 	{
 		// TODO: Add tools back to inventory
@@ -58,10 +84,12 @@ public class Store extends Observable
 			archivedRentals.add(toEnd);
 		}
 	}
+	
 	public ArrayList<RentalRecord> getArchive()
 	{
 		return this.archivedRentals;
 	}
+	
 	public int calculateTotalSales()
 	{
 		int total = 0;

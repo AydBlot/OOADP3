@@ -1,8 +1,9 @@
 package hardwareStore;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-
-public class Customer {
+public class Customer implements Observer{
 	public String name;
 	private Store store;
 	private ArrayList<RentalRecord> orderList;
@@ -14,6 +15,25 @@ public class Customer {
 		this.rentType = type;
 	}
 	
+	//Observer update function looks for the rental ID
+	//of the expired rental order and returns the 
+	//tools
+    public void update(Observable obj, Object arg) {
+    	for (RentalRecord record : orderList) {
+    		if (arg.equals(record.getOrderID())) {
+    			orderList.remove(record);
+    			returnTools(record);
+    		}
+    	}
+        System.out.println("FirstNewsReader got The news:"+(String)arg);
+    }
+	
+    private void returnTools(RentalRecord record) {
+    	for (Tool returnTool : record.getRentedTools()) {
+    		store.processReturn(returnTool);
+    	}
+    }
+    
 	public RentBehavior getType() {
 		return rentType;
 	}
