@@ -1,6 +1,6 @@
 package hardwareStore;
 
-public final class CategoryTypes 
+public final class CategoryType
 {
 	public final static int PAINTING = 1;
 	public final static int CONCRETE = 2;

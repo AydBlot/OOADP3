@@ -13,6 +13,6 @@ public class PaintingTool extends Tool
 	}
 	public int getCategory()
 	{
-		return CategoryTypes.PAINTING; 
+		return CategoryType.PAINTING; 
 	}
 }

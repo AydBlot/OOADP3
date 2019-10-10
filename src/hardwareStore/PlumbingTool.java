@@ -13,6 +13,6 @@ public class PlumbingTool extends Tool
 	}
 	public int getCategory()
 	{
-		return CategoryTypes.PLUMBING; 
+		return CategoryType.PLUMBING; 
 	}
 }

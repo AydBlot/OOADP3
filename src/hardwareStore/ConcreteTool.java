@@ -13,6 +13,6 @@ public class ConcreteTool extends Tool
 	}
 	public int getCategory()
 	{
-		return CategoryTypes.CONCRETE; 
+		return CategoryType.CONCRETE;
 	}
 }
