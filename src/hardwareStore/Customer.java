@@ -39,14 +39,15 @@ public class Customer implements Observer{
 	}
 	private boolean willRent() {
 		// Looks at inventory and see if I can rent tools
-		if (store.methodForInventoryCount == 0) {
+		if (store.getInventory().size() == 0) {
 			return false;
 		}
-		else if(this.rentType == Business && store.count < 3)
+		// If the customer is a business customer and the inventory does not have three tools then don't go rent
+		else if(this.rentType == BusinessCustomer && store.getInventory().size() < 3)
 		{
 			return false;
 		}
-		else if()
+		else if(this.rentType == Regular || this.rentType == Casual && store.getInventory().size())
 		// Look at what I have and random number to decide if I will go rent.
 		return true;
 	}

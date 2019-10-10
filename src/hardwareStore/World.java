@@ -1,8 +1,12 @@
 package hardwareStore;
 
+import java.util.ArrayList;
+
 public class World 
 {
 	private int currentDay;
+	private ArrayList<Store> stores;
+	private ArrayList<Customer> customers;
 	
 	
 	public World()
