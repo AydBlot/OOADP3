@@ -20,18 +20,16 @@ public class Customer implements Observer{
 	//tools
     public void update(Observable obj, Object arg) {
     	for (RentalRecord record : orderList) {
-    		if (arg.equals(record.getOrderID())) {
-    			orderList.remove(record);
+    		if (arg.equals(record.getOrderID())) {    			
     			returnTools(record);
+    			orderList.remove(record);
     		}
     	}
         System.out.println("FirstNewsReader got The news:"+(String)arg);
     }
 	
     private void returnTools(RentalRecord record) {
-    	for (Tool returnTool : record.getRentedTools()) {
-    		store.processReturn(returnTool);
-    	}
+		store.processReturn(record);
     }
     
 	public RentBehavior getType() {

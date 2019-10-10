@@ -27,10 +27,6 @@ public class Store extends Observable
 		this.name = name;
 	}
 	
-	public void processReturnedTools() {
-		
-	}
-	
 	public void addToolToInventory(Tool t)
 	{
 		this.inventory.add(t);
@@ -54,14 +50,19 @@ public class Store extends Observable
 				//Notify the observer of the ID that expired
 				//and remove it from the active rentals
 				notifyObservers(record.getOrderID());
-				activeRentals.remove(record);
-				archivedRentals.add(record);
 			}
 		}
 	}
 	
-	public void processReturn(Tool returnedTool) {
-		inventory.add(returnedTool);
+	public void processReturn(RentalRecord record) {
+		activeRentals.remove(record);
+		
+		//Return the tools
+		for (Tool rentedTool : record.getRentedTools()) {
+			inventory.add(rentedTool);
+		}
+		
+		archivedRentals.add(record);
 	}
 	
 	public void startRental(RentalRecord toStart)
