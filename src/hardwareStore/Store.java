@@ -27,62 +27,81 @@ public class Store extends Observable
 		this.name = name;
 	}
 	
+	/** 
+	 * Add a tool to the store's inventory.
+	 * @param t The tool to be added.
+	 */
 	public void addToolToInventory(Tool t)
 	{
 		this.inventory.add(t);
 	}
 	
+	/**
+	 * Remove a tool from the store's inventory.
+	 * @param t The tool to be removed.
+	 */
 	public void removeToolFromInventory(Tool t)
 	{
 		this.inventory.remove(t);
 	}
 	
+	/**
+	 * @return The store's current inventory.
+	 */
 	public ArrayList<Tool> getInventory()
 	{
 		return this.inventory;
 	}
 	
-	//called at the beginning of every day
-	public void checkRentalRecords(int currentDay) {
-		for (RentalRecord record: this.activeRentals){
+	/**
+	 * Look through the active rental records at the store and notify any customers
+	 * who have rentals that are due to be returned. Should be run before the beginning
+	 * of each day.
+	 * @param currentDay The current day in the simulation.
+	 */
+	public void checkRentalRecords(int currentDay) 
+	{
+		// Loop through the list of active rentals
+		for (RentalRecord record: this.activeRentals)
+		{
+			// Number of days that have passed since the rental record was created.
 			int daysPassed = currentDay - record.getDayRented();
-			if ( daysPassed == record.getDaysToRentTool()) {
-				//Notify the observer of the ID that expired
-				//and remove it from the active rentals
-				notifyObservers(record.getOrderID());
+			
+			// If the days passed is equal to the rental length, the rental is due
+			if (daysPassed == record.getRentalLength()) 
+			{
+				// Notify the customers that the record needs to be returned
+				notifyObservers(record.getID());
 			}
 		}
 	}
 	
-	public void processReturn(RentalRecord record) {
-		activeRentals.remove(record);
-		
-		//Return the tools
-		for (Tool rentedTool : record.getRentedTools()) {
-			inventory.add(rentedTool);
-		}
-		
-		archivedRentals.add(record);
-	}
-	
+	/**
+	 * Receives a rental record from the Customer and starts the rental 
+	 * by removing the tools from inventory and adding the rental record
+	 * to the list of active records.
+	 * @param toStart The rental to start.
+	 */
 	public void startRental(RentalRecord toStart)
 	{
 		// TODO: Remove tools from inventory
+		for ()
 		
 		// Add the RentalRecord to the list of active rentals
 		activeRentals.add(toStart);
 	}
 	
-	public void endRental(RentalRecord toEnd)
+	public void processReturn(RentalRecord record) 
 	{
-		// TODO: Add tools back to inventory
-		
-		// Move the rental from active rentals to the rental archive
-		// TODO: Throw exception if the rental record doesn't exist?
-		if(activeRentals.remove(toEnd))
+		// Return the tools to the inventory
+		for (Tool rentedTool : record.getRentedTools()) 
 		{
-			archivedRentals.add(toEnd);
+			addToolToInventory(rentedTool);
 		}
+		
+		// Move the rental record from active to archive
+		activeRentals.remove(record);
+		archivedRentals.add(record);
 	}
 	
 	public ArrayList<RentalRecord> getArchive()

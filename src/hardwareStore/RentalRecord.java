@@ -1,49 +1,85 @@
 package hardwareStore;
-import java.util.*;
+import java.util.UUID;
+import java.util.ArrayList;
 
 public class RentalRecord{
-	private String rentalID;
-	private int daysToRentTool;
+	private UUID rentalID;
+	private int rentalLength;
 	private int dayRented;
-	private ArrayList<Tool> ToolsToRent;
 	private int orderCost;
-	private ArrayList<RentalOption> OptionList;
+	private ArrayList<Tool> rentedTools;
+	private ArrayList<RentalOption> options;
 	
-	public RentalRecord(ArrayList<Tool> OrderedTools, int DaysToRent, int today){
-		this.ToolsToRent = OrderedTools;
-		this.daysToRentTool = DaysToRent;
-		this.rentalID = UUID.randomUUID().toString();
+	public RentalRecord(ArrayList<Tool> rentedTools, ArrayList<RentalOption> options, int rentalLength, int today)
+	{
+		this.rentedTools = rentedTools;
+		this.rentalLength = rentalLength;
+		this.rentalID = UUID.randomUUID();
 		this.dayRented = today;
+		
+		// Calculate the total cost
+		calculateCost();
 	}
 	
-	public String getOrderID()
+	/**
+	 * @return The unique ID for the rental record.
+	 */
+	public UUID getID()
 	{
 		return this.rentalID;
 	}
 	
-	public int getDayRented() {
+	/** 
+	 * @return The day that the tools were rented on.
+	 */
+	public int getDayRented() 
+	{
 		return this.dayRented;
 	}
 	
-	public void setOptions(ArrayList<RentalOption> Options) {
-		this.OptionList = Options;
+	/** 
+	 * @return The number of days that the tools were rented for.
+	 */
+	public int getRentalLength()
+	{
+		return this.rentalLength;
 	}
 	
-	public void calculateCost() {
-		for (RentalOption option: this.OptionList) {
-			this.orderCost += option.getCost();
+	/**
+	 * @return The list of tools in the rental record.
+	 */
+	public ArrayList<Tool> getRentedTools()
+	{
+		return this.rentedTools;
+	}
+	
+	/**
+	 * @return The total cost of the rental record.
+	 */
+	public int getCost()
+	{
+		return this.orderCost;
+	}
+	
+	/**
+	 * Calculates the total cost of the rental based on the
+	 * options and tools added to the RentalRecord
+	 */
+	private void calculateCost()
+	{
+		// Initialize orderCost to 0
+		orderCost = 0;
+		
+		// Add the cost of the options
+		for (RentalOption option: options) 
+		{
+			orderCost += option.getCost();
 		}
 		
-		for (Tool rentedTool: this.ToolsToRent) {
-			this.orderCost += (rentedTool.getDailyPrice() * this.daysToRentTool);
+		// Add the total cost of the tools (cost per day * total days)
+		for (Tool tool: rentedTools) 
+		{
+			orderCost += (tool.getDailyPrice() * rentalLength);
 		}
-	}
-	
-	public int getDaysToRentTool() {
-		return this.daysToRentTool;
-	}
-	
-	public ArrayList<Tool> getRentedTools(){
-		return this.ToolsToRent;
 	}
 }

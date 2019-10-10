@@ -1,7 +1,9 @@
 package hardwareStore;
+
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.UUID;
 
 public class Customer implements Observer{
 	public String name;
@@ -19,8 +21,13 @@ public class Customer implements Observer{
 	//of the expired rental order and returns the 
 	//tools
     public void update(Observable obj, Object arg) {
-    	for (RentalRecord record : orderList) {
-    		if (arg.equals(record.getOrderID())) {    			
+    	
+    	UUID recordID = (UUID)arg;
+    	
+    	for (RentalRecord record : orderList) 
+    	{
+    		if (recordID.equals(record.getID())) 
+			{    			
     			returnTools(record);
     			orderList.remove(record);
     		}
