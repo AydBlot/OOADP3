@@ -1,6 +1,7 @@
 package hardwareStore;
 
-public abstract class RentalOption{
+public abstract class RentalOption
+{
 	
 	/**
 	 * @return The description of the rental option.

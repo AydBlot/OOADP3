@@ -1,13 +1,19 @@
 package hardwareStore;
 
 public class AccessoryKitOption extends RentalOption{
-	private int cost = 8;
+	private final int COST = 8;
 	
-	public String getDescription() {
-		return "Accessory Kit";
+	public AccessoryKitOption()
+	{
+		
 	}
 	
-	public int getCost() {
-		return this.cost;
+	public String getDescription() 
+	{
+		return "Accessory Kit";
+	}
+	public int getCost() 
+	{
+		return COST;
 	}
 }

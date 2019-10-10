@@ -1,13 +1,20 @@
 package hardwareStore;
 
-public class ProtectiveGearOption {
-	private int cost = 12;
+public class ProtectiveGearOption 
+{
+	private final int COST = 12;
 	
-	public String getDescription() {
-		return "Protective Gear Package";
+	public ProtectiveGearOption()
+	{
+		
 	}
 	
-	public int getCost() {
-		return this.cost;
+	public String getDescription() 
+	{
+		return "Protective Gear Package";
+	}
+	public int getCost() 
+	{
+		return COST;
 	}
 }
