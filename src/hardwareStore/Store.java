@@ -55,13 +55,11 @@ public class Store extends Observable
 	}
 	
 	public void processReturn(RentalRecord record) {
-		activeRentals.remove(record);
-		
 		//Return the tools
 		for (Tool rentedTool : record.getRentedTools()) {
 			inventory.add(rentedTool);
 		}
-		
+		activeRentals.remove(record);
 		archivedRentals.add(record);
 	}
 	
@@ -71,18 +69,6 @@ public class Store extends Observable
 		
 		// Add the RentalRecord to the list of active rentals
 		activeRentals.add(toStart);
-	}
-	
-	public void endRental(RentalRecord toEnd)
-	{
-		// TODO: Add tools back to inventory
-		
-		// Move the rental from active rentals to the rental archive
-		// TODO: Throw exception if the rental record doesn't exist?
-		if(activeRentals.remove(toEnd))
-		{
-			archivedRentals.add(toEnd);
-		}
 	}
 	
 	public ArrayList<RentalRecord> getArchive()
