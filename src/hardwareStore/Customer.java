@@ -5,18 +5,35 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.UUID;
 
-public class Customer implements Observer{
+public abstract class Customer implements Observer{
 	public String name;
-	private Store store;
-	private ArrayList<RentalRecord> orderList;
-	private RentBehavior rentType;
+	protected Store store;
+	protected ArrayList<RentalRecord> orderList;
+	public int day;
 	
-	public Customer(String name, RentBehavior type, Store store){
+	public Customer(String name, Store store){
 		this.name = name;
 		this.store = store;
-		this.rentType = type;
+	}	
+	// Methods
+	protected int numOptions() {
+		int num = (int)(Math.random() * 6);
+		return num;
 	}
 	
+	public void updateDay() {
+		this.day = day+1;
+	}
+	
+	public final void rentTools() {
+		//Determine if we are going to go to the store
+		willRent();
+		if(willRent()){
+			rent();
+		}
+	}
+	protected abstract boolean willRent();
+	protected abstract RentalRecord rent();
 	//Observer update function looks for the rental ID
 	//of the expired rental order and returns the 
 	//tools
@@ -38,26 +55,4 @@ public class Customer implements Observer{
     private void returnTools(RentalRecord record) {
 		store.processReturn(record);
     }
-    
-	public RentBehavior getType() {
-		return rentType;
-	}
-	private boolean willRent() {
-		// Looks at inventory and see if I can rent tools
-		if (store.getInventory().size() == 0) {
-			return false;
-		}
-		// If the customer is a business customer and the inventory does not have three tools then don't go rent
-		else if(this.rentType == BusinessCustomer && store.getInventory().size() < 3)
-		{
-			return false;
-		}
-		else if(this.rentType == Regular || this.rentType == Casual && store.getInventory().size())
-		// Look at what I have and random number to decide if I will go rent.
-		return true;
-	}
-	 RentalRecord rentTools() {
-		// Check if we're casual or regular
-		// Look at inventory generate number between 1 and the (min(inventory), max(rentals)). Rent that many tools
-	}
 }
