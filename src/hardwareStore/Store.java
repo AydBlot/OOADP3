@@ -82,15 +82,6 @@ public class Store extends Observable
 	 * to the list of active records.
 	 * @param toStart The rental to start.
 	 */
-	public void startRental(RentalRecord toStart)
-	{
-		// TODO: Remove tools from inventory
-		for ()
-		
-		// Add the RentalRecord to the list of active rentals
-		activeRentals.add(toStart);
-	}
-	
 	public void processReturn(RentalRecord record) 
 	{
 		// Return the tools to the inventory
@@ -103,7 +94,7 @@ public class Store extends Observable
 		activeRentals.remove(record);
 		archivedRentals.add(record);
 	}
-	
+
 	public ArrayList<RentalRecord> getArchive()
 	{
 		return this.archivedRentals;
