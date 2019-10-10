@@ -12,7 +12,7 @@ public class RegularCustomer extends Customer { //rent one to three tools each t
 	public int howMany() {
 		int num;
 		if(store.getInventory().size() >= 3) {
-			num = (int) (Math.random() * 3);
+			num = (int) (Math.random() * 4);
 		}
 		else if(store.getInventory().size() == 2) {
 			num = (Math.random() <= 0.5) ? 1 : 2;
@@ -43,7 +43,7 @@ public class RegularCustomer extends Customer { //rent one to three tools each t
 	}
 	
 	@Override
-	protected RentalRecord rent() {
+	protected RentalRecord rent(int currentDay) {
 		// Determine number of tools to rent
 		int numTools = this.howMany();
 		// Create tool and option lists
@@ -53,9 +53,15 @@ public class RegularCustomer extends Customer { //rent one to three tools each t
 		ArrayList<Tool> storeInventory = store.getInventory();
 		// Choose your tools and options
 		for(int i = 1; i <= numTools; i++) {
+			int numOptions = this.numOptions();
 			rentList.add(storeInventory.get(storeInventory.size()-i));
+			for(int y = 0; y < numOptions; y++) {
+				RentalOption opt = this.randomRentOption();
+				options.add(opt);
+			}
 		}
-		RentalRecord rentItems = new RentalRecord(rentList, options, this.howLong(), this.day);
+		RentalRecord rentItems = new RentalRecord(rentList, options, this.howLong(), currentDay);
+		this.orderList.add(rentItems);
 		return rentItems;
 	}
 }

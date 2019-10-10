@@ -20,15 +20,21 @@ public class BusinessCustomer extends Customer{
 	}
 	
 	@Override
-	protected RentalRecord rent() {
+	protected RentalRecord rent(int currentDay) {
 		ArrayList<Tool> rentList = null;
+		ArrayList<RentalOption> options = null;
 		ArrayList<Tool> storeInventory = store.getInventory();
 		// Loop 
 		for(int i = 1; i <= 3; i++) {
+			int numOptions = this.numOptions();
 			rentList.add(storeInventory.get(storeInventory.size()-i));
+			for(int y = 0; y < numOptions; y++) {
+				RentalOption opt = this.randomRentOption();
+				options.add(opt);
+			}
 		}
-		
-		RentalRecord rentItems = new RentalRecord(rentList, 7);
+		RentalRecord rentItems = new RentalRecord(rentList, options, 7, currentDay);
+		this.orderList.add(rentItems);
 		return rentItems;
 	}
 

@@ -38,15 +38,22 @@ public class CasualCustomer extends Customer { // one or two tools for one or tw
 	}
 	
 	@Override
-	protected RentalRecord rent() {
+	protected RentalRecord rent(int currentDay) {
 		int numTools = this.howMany();
+		ArrayList<RentalOption> options = null;
 		ArrayList<Tool> rentList = null;
 		ArrayList<Tool> storeInventory = store.getInventory();
 		// Loop 
 		for(int i = 1; i <= numTools; i++) {
+			int numOptions = this.numOptions();
 			rentList.add(storeInventory.get(storeInventory.size()-i));
+			for(int y = 0; y < numOptions; y++) {
+				RentalOption opt = this.randomRentOption();
+				options.add(opt);
+			}
 		}
-		RentalRecord rentItems = new RentalRecord(rentList, this.howLong());
+		RentalRecord rentItems = new RentalRecord(rentList, options, this.howLong(), currentDay);
+		this.orderList.add(rentItems);
 		return rentItems;
 	}
 	

@@ -1,6 +1,6 @@
 package hardwareStore;
 
-public class ProtectiveGearOption 
+public class ProtectiveGearOption extends RentalOption
 {
 	private final int COST = 12;
 	

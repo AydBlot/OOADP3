@@ -9,31 +9,40 @@ public abstract class Customer implements Observer{
 	public String name;
 	protected Store store;
 	protected ArrayList<RentalRecord> orderList;
-	public int day;
 	
 	public Customer(String name, Store store){
 		this.name = name;
 		this.store = store;
 	}	
 	// Methods
+	
+	protected RentalOption randomRentOption() {
+		int num = (int)(Math.random() * 3);
+		if(num == 0) {
+			return new AccessoryKitOption();
+		}
+		else if(num == 1) {
+			return new ExtensionCordOption();
+		}
+		else {
+			return new ProtectiveGearOption();
+		}
+	}
+	
 	protected int numOptions() {
-		int num = (int)(Math.random() * 6);
+		int num = (int)(Math.random() * 7);
 		return num;
 	}
 	
-	public void updateDay() {
-		this.day = day+1;
-	}
-	
-	public final void rentTools() {
+	public final void rentTools(int currentDay) {
 		//Determine if we are going to go to the store
 		willRent();
 		if(willRent()){
-			rent();
+			rent(currentDay);
 		}
 	}
 	protected abstract boolean willRent();
-	protected abstract RentalRecord rent();
+	protected abstract RentalRecord rent(int currentDay);
 	//Observer update function looks for the rental ID
 	//of the expired rental order and returns the 
 	//tools
