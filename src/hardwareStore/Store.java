@@ -85,7 +85,7 @@ public class Store extends Observable
 	public void processReturn(RentalRecord record) 
 	{
 		// Return the tools to the inventory
-		for (Tool rentedTool : record.getRentedTools()) 
+		for (Tool rentedTool : record.getRentedTools())
 		{
 			addToolToInventory(rentedTool);
 		}
@@ -95,25 +95,32 @@ public class Store extends Observable
 		archivedRentals.add(record);
 	}
 
+	/**
+	 * @return The list of archived rentals.
+	 */
 	public ArrayList<RentalRecord> getArchive()
 	{
 		return this.archivedRentals;
 	}
 	
+	/**
+	 * Calculate the current total money made by the store.
+	 * @return The calculated total.
+	 */
 	public int calculateTotalSales()
 	{
 		int total = 0;
 		
-		// TODO: Calculate the total sales based on the active and archived rentals
-		
+		// Money made from active rentals
 		for(RentalRecord rec : activeRentals)
 		{
-			
+			total += rec.getCost();
 		}
 		
+		// Money made from archived rentals
 		for(RentalRecord rec : archivedRentals)
 		{
-			
+			total += rec.getCost();
 		}
 		
 		return total;

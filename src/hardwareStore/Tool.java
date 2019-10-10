@@ -10,8 +10,7 @@ public abstract class Tool
 	}
 	
 	/**
-	 * 
-	 * @return The name of the tool
+	 * @return The name of the tool.
 	 */
 	public String getName()
 	{
@@ -19,14 +18,12 @@ public abstract class Tool
 	}
 	
 	/** 
-	 * 
-	 * @return The cost per day for renting the tool based on the Category type that the tool is
+	 * @return The cost per day for renting the tool based on the category that the tool is a part of.
 	 */
 	public abstract int getDailyPrice();
 	
 	/**
-	 * 
-	 * @return The category that the tool is in. Category types are found in CategoryType.java
+	 * @return The category that the tool is in. Category types are defined in the CategoryType class.
 	 */
 	public abstract int getCategory();
 }
