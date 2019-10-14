@@ -10,6 +10,8 @@ public class World
 	
 	public World()
 	{
+		stores = new ArrayList<Store>();
+		customers = new ArrayList<Customer>();
 		currentDay = 0;
 	}
 	
@@ -18,14 +20,31 @@ public class World
 	 */
 	public void startNewDay()
 	{
+		if(currentDay != 0)
+		{
+			System.out.println("\n---------------\n");
+		}
+		else
+		{
+			System.out.println("\n");
+		}
+		
+		System.out.println("Cue the sun. Day " + currentDay + " is starting now.");
+		
 		// Increment the day counter
 		currentDay++;
 		
 		// Loop through each store
 		for (Store store : stores)
 		{
-			// First, stores need to check if they have any due rentals and notify customers
+			// Check if they have any due rentals and notify customers
 			store.checkRentalRecords(currentDay);
+		}
+
+		// Now, loop through each customer and have them run through their day
+		for(Customer customer: customers)
+		{
+			customer.runDay(currentDay);
 		}
 	}
 	
@@ -42,5 +61,15 @@ public class World
 		{
 			startNewDay();
 		}
+	}
+	
+	public void addStore(Store s)
+	{
+		stores.add(s);
+	}
+	
+	public void addCustomer(Customer c)
+	{
+		customers.add(c);
 	}
 }

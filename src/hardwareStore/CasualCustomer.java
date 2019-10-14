@@ -1,60 +1,39 @@
 package hardwareStore;
 
-import java.util.ArrayList;
-
-public class CasualCustomer extends Customer { // one or two tools for one or two nights
+/**
+ * A casual customer rents 1-2 tools for 1-2 days
+ * @author Lucas
+ *
+ */
+public class CasualCustomer extends Customer
+{
+	private final static int MAX_RENTALS_CASUAL = 2;
 	
-	public CasualCustomer(String name, RentBehavior type, Store store) {
+	public CasualCustomer(String name, Store store)
+	{
 		super(name, store);
-		// TODO Auto-generated constructor stub
-	}
-	// How many tools do I rent
-	public int howMany() {
-		// Source for random number line: https://stackoverflow.com/questions/21246696/generating-a-number-between-1-and-2-java-math-random/21246795
-		int num;
-		if(store.getInventory().size() >= 2) {
-			num = (Math.random() <= 0.5) ? 1 : 2;
-		}
-		else {
-			num = 1;
-		}		
-		return num;
-	}
-	// How long do I rent the tools for
-	public int howLong() {
-		int num = (Math.random() <= 0.5) ? 1 : 2;
-		return num;
-	}
-	// Will I even go to the store?
-	@Override
-	protected boolean willRent() {
-		// TODO Auto-generated method stub
-		if(store.getInventory().size() == 0) {
-			return false;
-		}
-		else {
-			return true;
-		}
 	}
 	
-	@Override
-	protected RentalRecord rent(int currentDay) {
-		int numTools = this.howMany();
-		ArrayList<RentalOption> options = null;
-		ArrayList<Tool> rentList = null;
-		ArrayList<Tool> storeInventory = store.getInventory();
-		// Loop 
-		for(int i = 1; i <= numTools; i++) {
-			int numOptions = this.numOptions();
-			rentList.add(storeInventory.get(storeInventory.size()-i));
-			for(int y = 0; y < numOptions; y++) {
-				RentalOption opt = this.randomRentOption();
-				options.add(opt);
-			}
-		}
-		RentalRecord rentItems = new RentalRecord(rentList, options, this.howLong(), currentDay);
-		this.orderList.add(rentItems);
-		return rentItems;
+	public int howMany()
+	{
+		int maxTools = Math.min(store.getInventory().size(), MAX_RENTALS - getNumToolsRented());
+		maxTools = Math.min(MAX_RENTALS_CASUAL, maxTools);
+
+		int numTools = (int)(Math.random() * maxTools) + 1;
+		
+		return numTools;
 	}
 	
+	public int howLong()
+	{
+		// Rent for [1, 2] days
+		int days = (int)(Math.random() * 2) + 1;
+		return days;
+	}
+	
+	protected boolean canRent()
+	{
+		// Rent if the store has at least 1 tool in inventory and the customer has less than 3 tools rented
+		return (store.getInventory().size() != 0) && (getNumToolsRented() < MAX_RENTALS);
+	}
 }

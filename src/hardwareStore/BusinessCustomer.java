@@ -1,42 +1,32 @@
 package hardwareStore;
 
-import java.util.ArrayList;
-
-public class BusinessCustomer extends Customer{
-	
-	public BusinessCustomer(String name, RentBehavior type, Store store) {
+/**
+ * A business customer always rents 3 items for 7 days
+ * @author Lucas
+ *
+ */
+public class BusinessCustomer extends Customer
+{
+	public BusinessCustomer(String name, Store store)
+	{
 		super(name,store);
-		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	protected boolean willRent(){
-		if(store.getInventory().size() < 3) {
-			return false;
-		}
-		else {
-			return true;
-		}
+	protected boolean canRent()
+	{
+		// Only rent if the store has at least 3 items in inventory and the customer has less than 3 tools rented
+		return (store.getInventory().size() >= 3) && (getNumToolsRented() < MAX_RENTALS);
 	}
 	
-	@Override
-	protected RentalRecord rent(int currentDay) {
-		ArrayList<Tool> rentList = null;
-		ArrayList<RentalOption> options = null;
-		ArrayList<Tool> storeInventory = store.getInventory();
-		// Loop 
-		for(int i = 1; i <= 3; i++) {
-			int numOptions = this.numOptions();
-			rentList.add(storeInventory.get(storeInventory.size()-i));
-			for(int y = 0; y < numOptions; y++) {
-				RentalOption opt = this.randomRentOption();
-				options.add(opt);
-			}
-		}
-		RentalRecord rentItems = new RentalRecord(rentList, options, 7, currentDay);
-		this.orderList.add(rentItems);
-		return rentItems;
+	protected int howLong()
+	{
+		// Business customers always rent for 7 days
+		return 7;
 	}
-
-
+	
+	protected int howMany()
+	{
+		// Business customers always rent 3 tools
+		return 3;
+	}
 }

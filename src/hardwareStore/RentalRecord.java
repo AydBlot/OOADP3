@@ -13,6 +13,7 @@ public class RentalRecord{
 	public RentalRecord(ArrayList<Tool> rentedTools, ArrayList<RentalOption> options, int rentalLength, int today)
 	{
 		this.rentedTools = rentedTools;
+		this.options = options;
 		this.rentalLength = rentalLength;
 		this.rentalID = UUID.randomUUID();
 		this.dayRented = today;

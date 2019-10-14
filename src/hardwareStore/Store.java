@@ -27,6 +27,11 @@ public class Store extends Observable
 		this.name = name;
 	}
 	
+	public String getName()
+	{
+		return this.name;
+	}
+	
 	/** 
 	 * Add a tool to the store's inventory.
 	 * @param t The tool to be added.
@@ -61,6 +66,8 @@ public class Store extends Observable
 	 */
 	public void checkRentalRecords(int currentDay) 
 	{
+		ArrayList<RentalRecord> recordsToReturn = new ArrayList<RentalRecord>();
+		
 		// Loop through the list of active rentals
 		for (RentalRecord record: this.activeRentals)
 		{
@@ -70,9 +77,15 @@ public class Store extends Observable
 			// If the days passed is equal to the rental length, the rental is due
 			if (daysPassed == record.getRentalLength()) 
 			{
-				// Notify the customers that the record needs to be returned
-				notifyObservers(record.getID());
+				recordsToReturn.add(record);
 			}
+		}
+		
+		for (RentalRecord record : recordsToReturn)
+		{
+			// Notify the customers that the record needs to be returned
+			setChanged();
+			notifyObservers(record);
 		}
 	}
 	
@@ -82,17 +95,35 @@ public class Store extends Observable
 	 * to the list of active records.
 	 * @param toStart The rental to start.
 	 */
-	public void processReturn(RentalRecord record) 
+	public void startRental(RentalRecord rental)
+	{
+		// Remove the tools in the rental from inventory
+		for(Tool rentedTool : rental.getRentedTools())
+		{
+			removeToolFromInventory(rentedTool);
+		}
+		
+		// Add the rental to the list of active rentals
+		activeRentals.add(rental);
+	}
+	
+	/**
+	 * Receives a rental record from the Customer and ends the renal
+	 * by adding the tools back to inventory and moving the rental record
+	 * from the list of active rentls to the list of archived rentals.
+	 * @param record The rental to end.
+	 */
+	public void processReturn(RentalRecord rental) 
 	{
 		// Return the tools to the inventory
-		for (Tool rentedTool : record.getRentedTools())
+		for (Tool rentedTool : rental.getRentedTools())
 		{
 			addToolToInventory(rentedTool);
 		}
 		
 		// Move the rental record from active to archive
-		activeRentals.remove(record);
-		archivedRentals.add(record);
+		activeRentals.remove(rental);
+		archivedRentals.add(rental);
 	}
 
 	/**

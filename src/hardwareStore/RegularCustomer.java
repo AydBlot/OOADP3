@@ -1,67 +1,39 @@
 package hardwareStore;
 
-import java.util.ArrayList;
-
-public class RegularCustomer extends Customer { //rent one to three tools each time they visit for 3 to 5 nights
+/**
+ * A Regular customer rents 1-3 tools for 3-5 days
+ * @author Lucas
+ *
+ */
+public class RegularCustomer extends Customer
+{
+	private final static int MAX_RENTALS_REGULAR = 3;
 	
-	public RegularCustomer(String name, RentBehavior type, Store store) {
+	public RegularCustomer(String name, Store store)
+	{
 		super(name,store);
-		// TODO Auto-generated constructor stub
 	}
 
-	public int howMany() {
-		int num;
-		if(store.getInventory().size() >= 3) {
-			num = (int) (Math.random() * 4);
-		}
-		else if(store.getInventory().size() == 2) {
-			num = (Math.random() <= 0.5) ? 1 : 2;
-		}
-		else {
-			num = 1;
-		}
-		return num;
+	public int howMany()
+	{
+		int maxTools = Math.min(store.getInventory().size(), MAX_RENTALS - getNumToolsRented());
+		maxTools = Math.min(MAX_RENTALS_REGULAR, maxTools);
+
+		int numTools = (int)(Math.random() * maxTools) + 1;
+		
+		return numTools;
 	}
 	
-	public int howLong() {
-		int num;
-		int days;
-		num = (int) (Math.random() * 2);
-		days = 3 + num;
+	public int howLong()
+	{
+		// [3, 5] days
+		int days = 3 + (int)(Math.random() * 3);
 		return days;
 	}
 	
-	@Override
-	protected boolean willRent() {
-		// TODO Auto-generated method stub
-		if(store.getInventory().size() == 0) {
-			return false;
-		}
-		else {
-			return true;
-		}
-	}
-	
-	@Override
-	protected RentalRecord rent(int currentDay) {
-		// Determine number of tools to rent
-		int numTools = this.howMany();
-		// Create tool and option lists
-		ArrayList<RentalOption> options = null;
-		ArrayList<Tool> rentList = null;
-		// Look at the current store inventory
-		ArrayList<Tool> storeInventory = store.getInventory();
-		// Choose your tools and options
-		for(int i = 1; i <= numTools; i++) {
-			int numOptions = this.numOptions();
-			rentList.add(storeInventory.get(storeInventory.size()-i));
-			for(int y = 0; y < numOptions; y++) {
-				RentalOption opt = this.randomRentOption();
-				options.add(opt);
-			}
-		}
-		RentalRecord rentItems = new RentalRecord(rentList, options, this.howLong(), currentDay);
-		this.orderList.add(rentItems);
-		return rentItems;
+	protected boolean canRent()
+	{
+		// Rent if the store has at least 1 tool in inventory and the customer has less than 3 tools rented
+		return (store.getInventory().size() != 0) && (getNumToolsRented() < MAX_RENTALS);
 	}
 }
