@@ -73,8 +73,9 @@ public abstract class Customer implements Observer
 	 * @param currentDay The current day of the simulation
 	 * @return The generated Rental Record.
 	 */
-	protected RentalRecord generateRental(int currentDay)
+	protected final RentalRecord generateRental(int currentDay)
 	{
+		
 		// First, determine how many tools the customer will rent
 		int numTools = this.howMany();
 		
@@ -100,6 +101,8 @@ public abstract class Customer implements Observer
 		// Create and return a rental record
 		RentalRecord rental = new RentalRecord(tools, options, this.howLong(), currentDay);
 		return rental;
+		
+		
 	}
 	
 	
@@ -122,22 +125,23 @@ public abstract class Customer implements Observer
      * generates the rental and passes it to the customer's store.
      * @param currentDay The current day of the simulation.
      */
-    public final void runDay(int currentDay)
+    public void runDay(int currentDay)
 	{
-		// Determine if we are going to go to the store
-		if(canRent() && willRent())
+    	if(canRent() && willRent())
 		{
+			// Determine if we are going to go to the store
 			// If we go to the store, generate a rental
 			RentalRecord rental = generateRental(currentDay);
-			
+				
 			System.out.println(getName() + " rents " + rental.getRentedTools().size() + " tools for " + rental.getRentalLength() + " days.");
-			
+				
 			// Pass the rental to the store 
 			store.startRental(rental);
-			
+				
 			// Add the rental to the customer's order list
 			this.orderList.add(rental);
 		}
+		
 	}
     
     
