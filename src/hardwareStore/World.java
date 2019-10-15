@@ -12,7 +12,7 @@ public class World
 	{
 		stores = new ArrayList<Store>();
 		customers = new ArrayList<Customer>();
-		currentDay = 0;
+		currentDay = 1;
 	}
 	
 	/** 
@@ -20,7 +20,7 @@ public class World
 	 */
 	public void startNewDay()
 	{
-		if(currentDay != 0)
+		if(currentDay != 1)
 		{
 			System.out.println("\n---------------\n");
 		}
@@ -30,9 +30,6 @@ public class World
 		}
 		
 		System.out.println("Cue the sun. Day " + currentDay + " is starting now.");
-		
-		// Increment the day counter
-		currentDay++;
 		
 		// Loop through each store
 		for (Store store : stores)
@@ -46,6 +43,9 @@ public class World
 		{
 			customer.runDay(currentDay);
 		}
+		
+		// Increment the day counter
+		currentDay++;
 	}
 	
 	/**
@@ -61,6 +61,15 @@ public class World
 		{
 			startNewDay();
 		}
+		
+		System.out.println("\n---------------\n");
+		
+		for(Store s : stores)
+		{
+			int total = s.calculateTotalSales();
+			
+			System.out.println("Cha-ching! " + s.getName() + " made a total of: $" + total);
+		}
 	}
 	
 	public void addStore(Store s)
@@ -72,4 +81,18 @@ public class World
 	{
 		customers.add(c);
 	}
+	
+	public int getCurrentDay() {
+		return this.currentDay;
+	}
+	
+	public ArrayList<Customer> getCustomers() {
+		return this.customers;
+	}
+	
+	public ArrayList<Store> getStores() {
+		return this.stores;
+	}
+	
+	
 }
