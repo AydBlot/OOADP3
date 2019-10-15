@@ -109,7 +109,7 @@ public abstract class Customer implements Observer
 	/**
 	 * @return The number of tools that the customer currently has rented out
 	 */
-    protected int getNumToolsRented()
+    public int getNumToolsRented()
     {
     	int total = 0;
     	for(RentalRecord rental : orderList)

@@ -1,4 +1,4 @@
-package hardwareStoreTest;
+package hardwareStore;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,14 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import hardwareStore.ConcreteTool;
-import hardwareStore.ExtensionCordOption;
-import hardwareStore.RentalOption;
-import hardwareStore.RentalRecord;
-import hardwareStore.Store;
-import hardwareStore.Tool;
-
-class StoreTest
+class TestStore
 {
 	Store s = new Store("Test");
 	Tool concTool = new ConcreteTool("Test Concrete Tool");

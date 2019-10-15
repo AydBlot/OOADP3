@@ -1,13 +1,8 @@
-package hardwareStoreTest;
+package hardwareStore;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
-import hardwareStore.CasualCustomer;
-import hardwareStore.Customer;
-import hardwareStore.Store;
-import hardwareStore.World;
 
 class TestWorld {
 	World hitchhikersWorld = World.getTheWorld();
