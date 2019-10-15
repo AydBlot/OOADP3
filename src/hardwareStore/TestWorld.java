@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class TestWorld {
-	World hitchhikersWorld = new World();
+	World hitchhikersWorld = World.getTheWorld();
 	Store hardwareStore = new Store("The Hard Store");
 	Customer newCustomer = new CasualCustomer("Steve", hardwareStore);
 	
@@ -38,7 +38,7 @@ class TestWorld {
 	void testCurrentDays() {
 		hitchhikersWorld.startNewDay();
 		
-		assertEquals(hitchhikersWorld.getCurrentDay(), 2);
+		assertEquals(hitchhikersWorld.getCurrentDay(), 1);
 	}
 	
 	@Test

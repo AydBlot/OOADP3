@@ -4,15 +4,16 @@ import java.util.ArrayList;
 
 public class World 
 {
+	private static World theWorld;
 	private int currentDay;
 	private ArrayList<Store> stores;
 	private ArrayList<Customer> customers;
 	
-	public World()
+	private World()
 	{
 		stores = new ArrayList<Store>();
 		customers = new ArrayList<Customer>();
-		currentDay = 1;
+		currentDay = 0;
 	}
 	
 	/** 
@@ -20,7 +21,7 @@ public class World
 	 */
 	public void startNewDay()
 	{
-		if(currentDay != 1)
+		if(currentDay != 0)
 		{
 			System.out.println("\n---------------\n");
 		}
@@ -94,5 +95,14 @@ public class World
 		return this.stores;
 	}
 	
+	public static World getTheWorld()
+	{
+		if(theWorld == null)
+		{
+			theWorld = new World();
+		}
+		
+		return theWorld;
+	}
 	
 }

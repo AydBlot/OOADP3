@@ -4,7 +4,7 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		World aWholeNewWorld = new World();
+		World aWholeNewWorld = World.getTheWorld();
 		
 		Store theStore = new Store("Bartlebee's Hardware Shack");
 		
