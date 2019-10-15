@@ -1,4 +1,4 @@
-package hardwareStore;
+package hardwareStoreTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,6 +6,19 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
+
+import hardwareStore.AccessoryKitOption;
+import hardwareStore.BusinessCustomer;
+import hardwareStore.CasualCustomer;
+import hardwareStore.ConcreteTool;
+import hardwareStore.Customer;
+import hardwareStore.ExtensionCordOption;
+import hardwareStore.ProtectiveGearOption;
+import hardwareStore.RegularCustomer;
+import hardwareStore.RentalOption;
+import hardwareStore.RentalRecord;
+import hardwareStore.Store;
+import hardwareStore.Tool;
 
 class TestRent {
 	private Store emptyStore = new Store("Empty Store");
