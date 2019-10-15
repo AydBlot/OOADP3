@@ -61,6 +61,15 @@ public class World
 		{
 			startNewDay();
 		}
+		
+		System.out.println("\n---------------\n");
+		
+		for(Store s : stores)
+		{
+			int total = s.calculateTotalSales();
+			
+			System.out.println("Cha-ching! " + s.getName() + " made a total of: $" + total);
+		}
 	}
 	
 	public void addStore(Store s)

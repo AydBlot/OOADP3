@@ -135,6 +135,14 @@ public class Store extends Observable
 	}
 	
 	/**
+	 * @return The list of active rentals.
+	 */
+	public ArrayList<RentalRecord> getActiveRentals()
+	{
+		return this.activeRentals;
+	}
+	
+	/**
 	 * Calculate the current total money made by the store.
 	 * @return The calculated total.
 	 */
