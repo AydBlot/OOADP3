@@ -4,10 +4,7 @@ public class ExtensionCordOption extends RentalOption
 {
 	private final int COST = 4;
 	
-	public ExtensionCordOption()
-	{
-		
-	}
+	public ExtensionCordOption(){}
 	
 	public String getDescription() 
 	{

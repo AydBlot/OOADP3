@@ -2,10 +2,20 @@ package hardwareStore;
 
 import java.util.ArrayList;
 
+/**
+ * A World contains Customers and Stores and 
+ * handles running a simulation for a given number of days.
+ * 
+ * Implements the Singleton pattern - there can only be one World in a program
+ * which is created/accessed using the getTheWorld function.
+ * 
+ * @author Alex
+ *
+ */
 public class World 
 {
 	private static World theWorld;
-	private int currentDay;
+	private int stagedDay;
 	private ArrayList<Store> stores;
 	private ArrayList<Customer> customers;
 	
@@ -13,7 +23,7 @@ public class World
 	{
 		stores = new ArrayList<Store>();
 		customers = new ArrayList<Customer>();
-		currentDay = 0;
+		stagedDay = 1;
 	}
 	
 	/** 
@@ -21,7 +31,7 @@ public class World
 	 */
 	public void startNewDay()
 	{
-		if(currentDay != 0)
+		if(stagedDay != 1)
 		{
 			System.out.println("\n---------------\n");
 		}
@@ -30,23 +40,23 @@ public class World
 			System.out.println("\n");
 		}
 		
-		System.out.println("Cue the sun. Day " + currentDay + " is starting now.");
+		System.out.println("Cue the sun. Day " + stagedDay + " is starting now.");
 		
 		// Loop through each store
 		for (Store store : stores)
 		{
 			// Check if they have any due rentals and notify customers
-			store.checkRentalRecords(currentDay);
+			store.checkRentalRecords(stagedDay);
 		}
 
 		// Now, loop through each customer and have them run through their day
 		for(Customer customer: customers)
 		{
-			customer.runDay(currentDay);
+			customer.runDay(stagedDay);
 		}
 		
-		// Increment the day counter
-		currentDay++;
+		// Stage the next day by incrementing the day counter
+		stagedDay++;
 	}
 	
 	/**
@@ -57,8 +67,8 @@ public class World
 	 */
 	public void runSimulation(int days)
 	{
-		int startDay = currentDay;
-		while(currentDay - startDay < days)
+		int startDay = stagedDay;
+		while(stagedDay - startDay < days)
 		{
 			startNewDay();
 		}
@@ -83,8 +93,8 @@ public class World
 		customers.add(c);
 	}
 	
-	public int getCurrentDay() {
-		return this.currentDay;
+	public int getStagedDay() {
+		return this.stagedDay;
 	}
 	
 	public ArrayList<Customer> getCustomers() {

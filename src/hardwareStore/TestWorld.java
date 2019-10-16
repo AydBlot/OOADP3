@@ -38,15 +38,15 @@ class TestWorld {
 	void testCurrentDays() {
 		hitchhikersWorld.startNewDay();
 		
-		assertEquals(hitchhikersWorld.getCurrentDay(), 1);
+		assertEquals(hitchhikersWorld.getStagedDay(), 2);
 	}
 	
 	@Test
 	void testRunSimulation() {
 		hitchhikersWorld.runSimulation(4);
 		
-		//At the start of the 5th day, but have yet to perform the actions of that day.
-		assertEquals(hitchhikersWorld.getCurrentDay(), 5);
+		// At the start of the 6th day, but have yet to perform the actions of that day.
+		assertEquals(hitchhikersWorld.getStagedDay(), 6);
 	}
 	
 	

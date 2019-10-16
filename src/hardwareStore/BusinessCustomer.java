@@ -1,7 +1,8 @@
 package hardwareStore;
 
 /**
- * A business customer always rents 3 items for 7 days
+ * A business customer always rents 3 items for 7 days.
+ * 
  * @author Lucas
  *
  */

@@ -1,9 +1,19 @@
 package hardwareStore;
 
+/**
+ * Tools are rented to Customers from Stores via Rental Records.
+ * 
+ * @author Alex
+ *
+ */
 public abstract class Tool 
 {
 	protected String name;
 
+	/**
+	 * Constructor for Tools
+	 * @param name The name of the tool
+	 */
 	public Tool(String name)
 	{
 		this.name = name;

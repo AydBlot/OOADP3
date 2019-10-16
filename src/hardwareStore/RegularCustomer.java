@@ -1,7 +1,8 @@
 package hardwareStore;
 
 /**
- * A Regular customer rents 1-3 tools for 3-5 days
+ * A Regular customer rents 1-3 tools for 3-5 days.
+ * 
  * @author Lucas
  *
  */

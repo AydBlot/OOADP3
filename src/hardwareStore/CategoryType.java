@@ -1,5 +1,11 @@
 package hardwareStore;
 
+/**
+ * Tool category types
+ * 
+ * @author Alex
+ *
+ */
 public final class CategoryType
 {
 	public final static int PAINTING = 0;

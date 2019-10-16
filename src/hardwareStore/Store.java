@@ -3,6 +3,15 @@ package hardwareStore;
 import java.util.ArrayList;
 import java.util.Observable;
 
+/**
+ * A Store is visited by Customers and rents Tools to those customers.
+ * 
+ * Implements the Observable/Subject part of the Observer pattern 
+ * in conjunction with Customer, which implements Observer.
+ * 
+ * @author Alex
+ *
+ */
 @SuppressWarnings("deprecation")
 public class Store extends Observable
 {
@@ -11,6 +20,10 @@ public class Store extends Observable
 	private ArrayList<RentalRecord> archivedRentals;
 	private String name;
 	
+	/**
+	 * Constructor for Store
+	 * @param name The name of the store
+	 */
 	public Store(String name)
 	{
 		this.inventory = new ArrayList<Tool>();
@@ -19,6 +32,11 @@ public class Store extends Observable
 		this.name = name;
 	}
 	
+	/**
+	 * Constructor for Store with an inventory
+	 * @param name The name of the store
+	 * @param inventory The list of Tools that exist in the Store's inventory
+	 */
 	public Store(String name, ArrayList<Tool> inventory)
 	{
 		this.inventory = new ArrayList<Tool>(inventory);
@@ -27,6 +45,9 @@ public class Store extends Observable
 		this.name = name;
 	}
 	
+	/**
+	 * @return The name of the store.
+	 */
 	public String getName()
 	{
 		return this.name;

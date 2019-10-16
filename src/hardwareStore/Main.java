@@ -4,9 +4,13 @@ public class Main
 {
 	public static void main(String[] args)
 	{
+		// Get the World
 		World aWholeNewWorld = World.getTheWorld();
 		
+		// Create a Store
 		Store theStore = new Store("Bartlebee's Hardware Shack");
+		
+		// Create and add tools to the Store
 		
 		// Concrete Tools
 		theStore.addToolToInventory(new ConcreteTool("Concrete Mixer"));
@@ -28,7 +32,10 @@ public class Main
 		theStore.addToolToInventory(new PlumbingTool("Plumbing Wrench"));
 		theStore.addToolToInventory(new PlumbingTool("Plunger"));
 		
+		// Add the Store to the World
 		aWholeNewWorld.addStore(theStore);
+		
+		// Create Customers and add them to the World
 		
 		Customer timApple = new RegularCustomer("Timothy Apple", theStore);
 		aWholeNewWorld.addCustomer(timApple);
@@ -39,6 +46,7 @@ public class Main
 		Customer larryGoogle = new BusinessCustomer("Laurence Google", theStore);
 		aWholeNewWorld.addCustomer(larryGoogle);
 		
+		// Run the simulation for 35 days
 		aWholeNewWorld.runSimulation(35);
 	}
 }

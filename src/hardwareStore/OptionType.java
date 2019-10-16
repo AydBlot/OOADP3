@@ -1,5 +1,11 @@
 package hardwareStore;
 
+/**
+ * RentalOption types and a total count of types
+ * 
+ * @author Alex
+ *
+ */
 public class OptionType 
 {
 	public final static int PROTECTIVE_GEAR = 0;

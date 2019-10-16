@@ -1,7 +1,8 @@
 package hardwareStore;
 
 /**
- * A casual customer rents 1-2 tools for 1-2 days
+ * A casual customer rents 1-2 tools for 1-2 days.
+ * 
  * @author Lucas
  *
  */

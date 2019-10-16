@@ -23,13 +23,7 @@ class TestRent {
 	RentalOption option2 = new ProtectiveGearOption();
 	RentalOption option3 = new AccessoryKitOption();
 	
-	
 	ArrayList<RentalOption> options = new ArrayList<RentalOption>();
-	
-
-	void setup(){		
-		
-	}
 	
 	@Test
 	void testStoreEmptyBusiness() {

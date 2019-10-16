@@ -2,7 +2,18 @@ package hardwareStore;
 import java.util.UUID;
 import java.util.ArrayList;
 
-public class RentalRecord{
+/**
+ * Rental Records are created by Customers and executed by Stores.
+ * Represents a rental, including the tools rented, 
+ * options added, rental length, and total cost
+ * 
+ * Implements the Command Pattern - created by Customer and executed by Store.
+ * 
+ * @author Ayden
+ *
+ */
+public class RentalRecord
+{
 	private UUID rentalID;
 	private int rentalLength;
 	private int dayRented;

@@ -1,8 +1,14 @@
 package hardwareStore;
 
+/**
+ * Rental Options are optional additional items added to a Rental Record.
+ * The price of a rental option applies to an entire rental, not on a daily basis.
+ * 
+ * @author Ayden
+ *
+ */
 public abstract class RentalOption
 {
-	
 	/**
 	 * @return The description of the rental option.
 	 */

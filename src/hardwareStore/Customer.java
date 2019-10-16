@@ -4,6 +4,22 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * A Customer visits a Store and rents Tools via RentalRecords.
+ * 
+ * Implements the Observer part of the Observer pattern 
+ * in conjunction with Store, which implements Observable/Subject
+ * 
+ * Also implements the Template pattern in the generateRental function,
+ * which makes calls to abstract functions that are implemented by types of Customers.
+ * 
+ * Also implements the Command pattern in conjunction with
+ * RentalRecords and Store. Customer creates a RentalRecord and passes it to Store,
+ * which executes it.
+ * 
+ * @author Lucas
+ *
+ */
 @SuppressWarnings("deprecation")
 public abstract class Customer implements Observer
 {
@@ -17,6 +33,11 @@ public abstract class Customer implements Observer
 	// The % chance that a customer goes to the store if they can go
 	protected final static double CHANCE_GOES_TO_STORE = 0.2;
 	
+	/**
+	 * Constructor for Customer
+	 * @param name The name of the customer.
+	 * @param store The store that the customer will visit.
+	 */
 	public Customer(String name, Store store)
 	{
 		this.name = name;
@@ -25,6 +46,9 @@ public abstract class Customer implements Observer
 		this.orderList = new ArrayList<RentalRecord>();
 	}	
 
+	/**
+	 * @return The customer's name.
+	 */
 	public String getName()
 	{
 		return this.name;
@@ -36,6 +60,10 @@ public abstract class Customer implements Observer
 	 */
 	protected abstract boolean canRent();
 	
+	/**
+	 * Randomly select if a customer goes to the store. 20% chance of happening.
+	 * @return true if they go to the store and false otherwise.
+	 */
 	protected boolean willRent()
 	{
 		return Math.random() <= CHANCE_GOES_TO_STORE;
@@ -58,8 +86,8 @@ public abstract class Customer implements Observer
 	
 	
 	/**
-	 * Generates the number of options to add.
-	 * @return A 
+	 * Generates a random number of options to add from [0, 6].
+	 * @return The number of options.
 	 */
 	protected int numOptions()
 	{
@@ -107,7 +135,7 @@ public abstract class Customer implements Observer
 	
 	
 	/**
-	 * @return The number of tools that the customer currently has rented out
+	 * @return The number of tools that the customer currently has rented out.
 	 */
     public int getNumToolsRented()
     {
@@ -127,9 +155,9 @@ public abstract class Customer implements Observer
      */
     public void runDay(int currentDay)
 	{
+    	// First, determine if we CAN and WILL go to the store
     	if(canRent() && willRent())
 		{
-			// Determine if we are going to go to the store
 			// If we go to the store, generate a rental
 			RentalRecord rental = generateRental(currentDay);
 			

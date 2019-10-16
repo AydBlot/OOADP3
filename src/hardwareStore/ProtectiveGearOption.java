@@ -4,10 +4,7 @@ public class ProtectiveGearOption extends RentalOption
 {
 	private final int COST = 12;
 	
-	public ProtectiveGearOption()
-	{
-		
-	}
+	public ProtectiveGearOption(){}
 	
 	public String getDescription() 
 	{

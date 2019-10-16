@@ -1,6 +1,7 @@
 package hardwareStore;
 
-public class AccessoryKitOption extends RentalOption{
+public class AccessoryKitOption extends RentalOption
+{
 	private final int COST = 8;
 	
 	public AccessoryKitOption()	{}
