@@ -103,16 +103,28 @@ public class RentalRecord
 	}
 	
 	public void printRentalDescription() {
-		String printString = this.getCustomer().getName() + "rented a";
-		for (Tool tool: this.getRentedTools() ) {
+		// Customer Name
+		String printString = this.getCustomer().getName() + " rented: ";
+		
+		// Tools
+		for (Tool tool: this.getRentedTools() )
+		{
 			printString += tool.getName() + ", ";
 		}
-		printString += "with Options";
-		for (RentalOption option : this.options) {
+		printString = printString.substring(0, printString.length() - 2);
+		
+		// Options
+		printString += " with Options ";
+		for (RentalOption option : this.options)
+		{
 			printString += option.getDescription() + ", "; 
 		}
-		printString += "for" + this.getCost();
-		printString += "for" + this.getRentalLength() + "days.";
+		
+		// Total Cost
+		printString += " which cost $" + this.getCost();
+		
+		// Duration
+		printString += " for " + this.getRentalLength() + " days.";
 		System.out.println(printString);
 	}
 }

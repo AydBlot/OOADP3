@@ -164,22 +164,29 @@ public class Store extends Observable
 	}
 	
 	public void printInventory() {
-		String printString = "The store currently has a";
-		for (Tool tool : this.inventory) {
+		String printString = this.getName() + "'s inventory: ";
+		for (Tool tool : this.inventory)
+		{
 			printString += tool.getName() + ", ";
 		}
+		printString = printString.substring(0, printString.length() - 2);
 		System.out.println(printString); 
 	}
 	
 	//Display the past archived tools that were rented and by whom
-	public void printArchivedRecords() {
-		for (RentalRecord archivedRental : archivedRentals) {
+	public void printArchivedRecords()
+	{
+		System.out.println("\nCompleted Rentals for " + this.getName() + ":");
+		for (RentalRecord archivedRental : archivedRentals)
+		{
 			archivedRental.printRentalDescription();
 		}
 	}
 	
 	public void printActiveReocrds() {
-		for (RentalRecord archivedRental : activeRentals) {
+		System.out.println("\nActive Rentals for " + this.getName() + ":");
+		for (RentalRecord archivedRental : activeRentals)
+		{
 			archivedRental.printRentalDescription();
 		}
 	}

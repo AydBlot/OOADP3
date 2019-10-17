@@ -38,14 +38,16 @@ public class World
 		else
 		{
 			System.out.println("\n");
-			for (Store store: stores) {
-				store.printInventory();
-				store.printActiveReocrds();
-				store.printArchivedRecords();
-			}
 		}
 		
-		System.out.println("Cue the sun. Day " + stagedDay + " is starting now.");
+		
+		System.out.println("Cue the sun. Day " + stagedDay + " is starting now.\n");
+		
+		for (Store store: stores) {
+			store.printInventory();
+			store.printActiveReocrds();
+			store.printArchivedRecords();
+		}
 		
 		// Loop through each store
 		for (Store store : stores)

@@ -46,6 +46,33 @@ public class Main
 		Customer larryGoogle = new BusinessCustomer("Laurence Google", theStore);
 		aWholeNewWorld.addCustomer(larryGoogle);
 		
+		Customer trumanburbank = new RegularCustomer("Truman Burbank", theStore);
+		aWholeNewWorld.addCustomer(trumanburbank);
+		
+		Customer amalikyoaz = new RegularCustomer("Amalik Yoaz", theStore);
+		aWholeNewWorld.addCustomer(amalikyoaz);
+		
+		Customer frankNStein = new RegularCustomer("Frank N Stein", theStore);
+		aWholeNewWorld.addCustomer(frankNStein);
+		
+		Customer mikerotch = new CasualCustomer("Mike Rotch", theStore);
+		aWholeNewWorld.addCustomer(mikerotch);
+		
+		Customer hughjass = new CasualCustomer("Hugh Jass", theStore);
+		aWholeNewWorld.addCustomer(hughjass);
+		
+		Customer willieStroker = new CasualCustomer("Willie Stoker", theStore);
+		aWholeNewWorld.addCustomer(willieStroker);
+		
+		Customer bendover = new BusinessCustomer("Ben Dover", theStore);
+		aWholeNewWorld.addCustomer(bendover);
+		
+		Customer ericshun = new BusinessCustomer("Eric Shun", theStore);
+		aWholeNewWorld.addCustomer(ericshun);
+		
+		Customer jackknauf = new BusinessCustomer("Jack Knauf", theStore);
+		aWholeNewWorld.addCustomer(jackknauf);
+				
 		// Run the simulation for 35 days
 		aWholeNewWorld.runSimulation(35);
 	}
