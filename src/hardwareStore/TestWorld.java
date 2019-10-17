@@ -27,6 +27,7 @@ class TestWorld {
 		assertEquals(hitchhikersWorld.getCustomers().size(), 3);		
 	}
 	
+	//Ensure the world can add a store properly
 	@Test
 	void testAddStore() {
 		hitchhikersWorld.addStore(hardwareStore);
@@ -34,6 +35,7 @@ class TestWorld {
 		assertEquals(hitchhikersWorld.getStores().size(), 1);
 	}
 
+	//Ensure the world is able to increment the days properly
 	@Test
 	void testCurrentDays() {
 		hitchhikersWorld.startNewDay();
@@ -41,6 +43,7 @@ class TestWorld {
 		assertEquals(hitchhikersWorld.getStagedDay(), 2);
 	}
 	
+	//Ensure the world is able to increment the days properly
 	@Test
 	void testRunSimulation() {
 		hitchhikersWorld.runSimulation(4);

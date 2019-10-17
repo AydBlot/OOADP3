@@ -101,4 +101,18 @@ public class RentalRecord
 			orderCost += (tool.getDailyPrice() * rentalLength);
 		}
 	}
+	
+	public void printRentalDescription() {
+		String printString = this.getCustomer().getName() + "rented a";
+		for (Tool tool: this.getRentedTools() ) {
+			printString += tool.getName() + ",";
+		}
+		printString += "with Options";
+		for (RentalOption option : this.options) {
+			printString += option.getDescription() + ","; 
+		}
+		printString += "for" + this.getCost();
+		printString += "for" + this.getRentalLength() + "days";
+		System.out.print(printString);
+	}
 }

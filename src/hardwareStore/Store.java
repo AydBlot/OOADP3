@@ -163,6 +163,19 @@ public class Store extends Observable
 		return this.activeRentals;
 	}
 	
+	//Display the past archived tools that were rented and by whom
+	public void printArchives() {
+		for (RentalRecord archivedRental : archivedRentals) {
+			archivedRental.printRentalDescription();
+		}
+	}
+	
+	public void printActiveReocrds() {
+		for (RentalRecord archivedRental : activeRentals) {
+			archivedRental.printRentalDescription();
+		}
+	}
+	
 	/**
 	 * Calculate the current total money made by the store.
 	 * @return The calculated total.
