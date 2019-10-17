@@ -176,7 +176,7 @@ public class Store extends Observable
 	//Display the past archived tools that were rented and by whom
 	public void printArchivedRecords()
 	{
-		System.out.println("Completed Rentals for " + this.getName() + ":");
+		System.out.println("\nCompleted Rentals for " + this.getName() + ":");
 		for (RentalRecord archivedRental : archivedRentals)
 		{
 			archivedRental.printRentalDescription();
@@ -184,7 +184,7 @@ public class Store extends Observable
 	}
 	
 	public void printActiveReocrds() {
-		System.out.println("Active Rentals for " + this.getName() + ":");
+		System.out.println("\nActive Rentals for " + this.getName() + ":");
 		for (RentalRecord archivedRental : activeRentals)
 		{
 			archivedRental.printRentalDescription();

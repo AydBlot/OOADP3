@@ -166,8 +166,6 @@ public abstract class Customer implements Observer
 			// If we go to the store, generate a rental
 			RentalRecord rental = generateRental(currentDay);
 			
-			System.out.println(getName() + " rents " + rental.getRentedTools().size() + " tool(s) for " + rental.getRentalLength() + " day(s).");
-			
 			// Pass the rental to the store 
 			store.startRental(rental);
 				
@@ -185,15 +183,6 @@ public abstract class Customer implements Observer
     private void returnTools(RentalRecord record)
     {
     	int toolsRented = record.getRentedTools().size();
-    	if(toolsRented == 1)
-    	{
-    		System.out.println(this.getName() + " returns " + toolsRented + " tool.");
-    	}
-    	else
-    	{
-    		System.out.println(this.getName() + " returns " + toolsRented + " tools.");
-    	}
-
 		store.processReturn(record);
     }
     
