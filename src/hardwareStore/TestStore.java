@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 class TestStore
 {
 	Store s = new Store("Test");
+	Customer c = new RegularCustomer("Tim", s);
 	Tool concTool = new ConcreteTool("Test Concrete Tool");
 	RentalOption extCordOpt = new ExtensionCordOption();
 	
@@ -55,7 +56,7 @@ class TestStore
 		oList.add(extCordOpt);
 		
 		// Create and start the rental record
-		RentalRecord r = new RentalRecord(tList, oList, RENTAL_LENGTH, 0);
+		RentalRecord r = new RentalRecord(tList, oList, RENTAL_LENGTH, 0, c);
 		s.startRental(r);
 		
 		// Inventory should now be empty

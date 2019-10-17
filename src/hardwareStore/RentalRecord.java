@@ -20,14 +20,16 @@ public class RentalRecord
 	private int orderCost;
 	private ArrayList<Tool> rentedTools;
 	private ArrayList<RentalOption> options;
+	private Customer rentalCustomer;
 	
-	public RentalRecord(ArrayList<Tool> rentedTools, ArrayList<RentalOption> options, int rentalLength, int today)
+	public RentalRecord(ArrayList<Tool> rentedTools, ArrayList<RentalOption> options, int rentalLength, int today, Customer rentalCustomer)
 	{
 		this.rentedTools = rentedTools;
 		this.options = options;
 		this.rentalLength = rentalLength;
 		this.rentalID = UUID.randomUUID();
 		this.dayRented = today;
+		this.rentalCustomer = rentalCustomer;
 		
 		// Calculate the total cost
 		calculateCost();
@@ -71,6 +73,11 @@ public class RentalRecord
 	public int getCost()
 	{
 		return this.orderCost;
+	}
+	
+	public Customer getCustomer()
+	{
+		return this.rentalCustomer;
 	}
 	
 	/**
