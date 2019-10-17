@@ -41,13 +41,13 @@ public class World
 		}
 		
 		
+		System.out.println("Cue the sun. Day " + stagedDay + " is starting now.\n");
+		
 		for (Store store: stores) {
 			store.printInventory();
 			store.printActiveReocrds();
 			store.printArchivedRecords();
 		}
-		
-		System.out.println("Cue the sun. Day " + stagedDay + " is starting now.");
 		
 		// Loop through each store
 		for (Store store : stores)
