@@ -20,14 +20,16 @@ public class RentalRecord
 	private int orderCost;
 	private ArrayList<Tool> rentedTools;
 	private ArrayList<RentalOption> options;
+	private Customer rentalCustomer;
 	
-	public RentalRecord(ArrayList<Tool> rentedTools, ArrayList<RentalOption> options, int rentalLength, int today)
+	public RentalRecord(ArrayList<Tool> rentedTools, ArrayList<RentalOption> options, int rentalLength, int today, Customer rentalCustomer)
 	{
 		this.rentedTools = rentedTools;
 		this.options = options;
 		this.rentalLength = rentalLength;
 		this.rentalID = UUID.randomUUID();
 		this.dayRented = today;
+		this.rentalCustomer = rentalCustomer;
 		
 		// Calculate the total cost
 		calculateCost();
@@ -73,6 +75,11 @@ public class RentalRecord
 		return this.orderCost;
 	}
 	
+	public Customer getCustomer()
+	{
+		return this.rentalCustomer;
+	}
+	
 	/**
 	 * Calculates the total cost of the rental based on the
 	 * options and tools added to the RentalRecord
@@ -93,5 +100,19 @@ public class RentalRecord
 		{
 			orderCost += (tool.getDailyPrice() * rentalLength);
 		}
+	}
+	
+	public void printRentalDescription() {
+		String printString = this.getCustomer().getName() + "rented a";
+		for (Tool tool: this.getRentedTools() ) {
+			printString += tool.getName() + ", ";
+		}
+		printString += "with Options";
+		for (RentalOption option : this.options) {
+			printString += option.getDescription() + ", "; 
+		}
+		printString += "for" + this.getCost();
+		printString += "for" + this.getRentalLength() + "days.";
+		System.out.println(printString);
 	}
 }

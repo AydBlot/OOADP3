@@ -163,6 +163,27 @@ public class Store extends Observable
 		return this.activeRentals;
 	}
 	
+	public void printInventory() {
+		String printString = "The store currently has a";
+		for (Tool tool : this.inventory) {
+			printString += tool.getName() + ", ";
+		}
+		System.out.println(printString); 
+	}
+	
+	//Display the past archived tools that were rented and by whom
+	public void printArchivedRecords() {
+		for (RentalRecord archivedRental : archivedRentals) {
+			archivedRental.printRentalDescription();
+		}
+	}
+	
+	public void printActiveReocrds() {
+		for (RentalRecord archivedRental : activeRentals) {
+			archivedRental.printRentalDescription();
+		}
+	}
+	
 	/**
 	 * Calculate the current total money made by the store.
 	 * @return The calculated total.

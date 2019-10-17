@@ -38,6 +38,11 @@ public class World
 		else
 		{
 			System.out.println("\n");
+			for (Store store: stores) {
+				store.printInventory();
+				store.printActiveReocrds();
+				store.printArchivedRecords();
+			}
 		}
 		
 		System.out.println("Cue the sun. Day " + stagedDay + " is starting now.");

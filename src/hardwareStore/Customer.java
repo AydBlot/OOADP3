@@ -23,7 +23,7 @@ import java.util.Observer;
 @SuppressWarnings("deprecation")
 public abstract class Customer implements Observer
 {
-	public String name;
+	protected String name;
 	protected Store store;
 	protected ArrayList<RentalRecord> orderList;
 	
@@ -132,7 +132,7 @@ public abstract class Customer implements Observer
 		}
 		
 		// Create and return a rental record
-		RentalRecord rental = new RentalRecord(tools, options, this.howLong(), currentDay);
+		RentalRecord rental = new RentalRecord(tools, options, this.howLong(), currentDay, this);
 		return rental;
 		
 		
@@ -200,7 +200,7 @@ public abstract class Customer implements Observer
     public void update(Observable obj, Object arg)
     {
     	RentalRecord toReturn = (RentalRecord)arg;
-    	if(orderList.remove(toReturn))
+    	if(toReturn.getCustomer() == this && orderList.remove(toReturn))
     	{
 	    	returnTools(toReturn);
     	}
