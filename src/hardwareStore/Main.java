@@ -68,10 +68,10 @@ public class Main
 		aWholeNewWorld.addCustomer(bendover);
 		
 		Customer jacksmith = new BusinessCustomer("Jack Smith", theStore);
-		aWholeNewWorld.addCustomer(ericshun);
+		aWholeNewWorld.addCustomer(jacksmith);
 		
 		Customer neildown = new BusinessCustomer("Neil Down", theStore);
-		aWholeNewWorld.addCustomer(jackknauf);
+		aWholeNewWorld.addCustomer(neildown);
 				
 		// Run the simulation for 35 days
 		aWholeNewWorld.runSimulation(35);

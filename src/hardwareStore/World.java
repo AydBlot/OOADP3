@@ -86,9 +86,10 @@ public class World
 		{
 			int total = s.calculateTotalSales();
 			
+			s.printSalesByCustomerType();
+						
 			System.out.println("Cha-ching! " + s.getName() + " made a total of: $" + total);
 			
-			s.printSalesByCustomerType();
 		}
 	}
 	
