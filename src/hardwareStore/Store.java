@@ -206,4 +206,45 @@ public class Store extends Observable
 		
 		return total;
 	}
+	
+	public void printSalesByCustomerType() 
+	{
+		int businessRentals = 0;
+		int casualRentals = 0;
+		int regularRentals = 0;
+		int completedRentals = 0;
+		for(RentalRecord rec : archivedRentals) 
+		{
+			if(rec.getCustomer().getType() == CustomerType.BUSINESS) {
+				businessRentals = businessRentals + 1;
+			}
+			else if(rec.getCustomer().getType() == CustomerType.CASUAL) {
+				casualRentals = casualRentals + 1;
+			}
+			else {
+				regularRentals = regularRentals + 1;				
+			}
+			completedRentals = completedRentals + 1;
+		}
+		
+		for(RentalRecord rec : activeRentals)
+		{
+			if(rec.getCustomer().getType() == CustomerType.BUSINESS) {
+				businessRentals = businessRentals + 1;
+			}
+			else if(rec.getCustomer().getType() == CustomerType.CASUAL) {
+				casualRentals = casualRentals + 1;
+			}
+			else {
+				regularRentals = regularRentals + 1;				
+			}
+			completedRentals = completedRentals + 1;
+		}
+		
+		System.out.println("Total number of completed rentals: " + completedRentals);
+		System.out.println("The business customers had: " + businessRentals + " rentals");
+		System.out.println("The regular customers had: " + regularRentals + " rentals");
+		System.out.println("The casual customers had: " + casualRentals + " rentals");
+		
+	}
 }
