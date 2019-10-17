@@ -38,6 +38,7 @@ public class World
 		else
 		{
 			System.out.println("\n");
+			
 		}
 		
 		System.out.println("Cue the sun. Day " + stagedDay + " is starting now.");
