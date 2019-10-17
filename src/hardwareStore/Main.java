@@ -36,8 +36,10 @@ public class Main
 		{
 			try
 			{
+				System.out.println("Printing to hardwarestore.out!");
 				PrintStream fileStream = new PrintStream(new FileOutputStream("hardwarestore.out"));
 				System.setOut(fileStream);
+				
 			} 
 			catch (Exception ex)
 			{
@@ -56,22 +58,36 @@ public class Main
 		// Concrete Tools
 		theStore.addToolToInventory(new ConcreteTool("Concrete Mixer"));
 		theStore.addToolToInventory(new ConcreteTool("Concrete Powder"));
+		theStore.addToolToInventory(new ConcreteTool("Jackhammer"));
+		theStore.addToolToInventory(new ConcreteTool("Concrete Saw"));
+		theStore.addToolToInventory(new ConcreteTool("Sledgehammer"));
 		
 		// Painting Tools
 		theStore.addToolToInventory(new PaintingTool("Paint Roller"));
 		theStore.addToolToInventory(new PaintingTool("Mixing Stick"));
+		theStore.addToolToInventory(new PaintingTool("Paint Brush"));
+		theStore.addToolToInventory(new PaintingTool("Tarp"));
+		theStore.addToolToInventory(new PaintingTool("Easel"));
 		
 		// Woodworking Tools
 		theStore.addToolToInventory(new WoodworkTool("Mitre Saw"));
 		theStore.addToolToInventory(new WoodworkTool("Sawhorse"));
+		theStore.addToolToInventory(new WoodworkTool("Hammer"));
+		theStore.addToolToInventory(new WoodworkTool("Table Saw"));
+		theStore.addToolToInventory(new WoodworkTool("Hand Saw"));
 		
 		// Yardworking Tools
 		theStore.addToolToInventory(new YardworkTool("Rake"));
 		theStore.addToolToInventory(new YardworkTool("Wheelbarrow"));
+		theStore.addToolToInventory(new YardworkTool("Hoe"));
+		theStore.addToolToInventory(new YardworkTool("Lawnmower"));
+		theStore.addToolToInventory(new YardworkTool("Sheers"));
 		
 		// Plumbing Tools
 		theStore.addToolToInventory(new PlumbingTool("Plumbing Wrench"));
 		theStore.addToolToInventory(new PlumbingTool("Plunger"));
+		theStore.addToolToInventory(new PlumbingTool("Industrial Toilet Brush"));
+		theStore.addToolToInventory(new PlumbingTool("Blowtorch"));
 		
 		// Add the Store to the World
 		aWholeNewWorld.addStore(theStore);

@@ -43,9 +43,10 @@ public class World
 		
 		System.out.println("Cue the sun. Day " + stagedDay + " is starting now.\n");
 		
+		// Print current inventory, active records, and completed records
 		for (Store store: stores) {
 			store.printInventory();
-			store.printActiveReocrds();
+			store.printActiveRecords();
 			store.printArchivedRecords();
 		}
 		
