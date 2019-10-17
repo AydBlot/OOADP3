@@ -45,6 +45,8 @@ public abstract class Customer implements Observer
 		store.addObserver(this);
 		this.orderList = new ArrayList<RentalRecord>();
 	}	
+	
+	abstract public int getType();
 
 	/**
 	 * @return The customer's name.

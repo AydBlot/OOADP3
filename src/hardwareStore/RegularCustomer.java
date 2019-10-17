@@ -14,6 +14,10 @@ public class RegularCustomer extends Customer
 	{
 		super(name,store);
 	}
+	
+	public int getType() {
+		return CustomerType.REGULAR;
+	}
 
 	public int howMany()
 	{

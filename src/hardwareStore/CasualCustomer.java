@@ -15,6 +15,10 @@ public class CasualCustomer extends Customer
 		super(name, store);
 	}
 	
+	public int getType() {
+		return CustomerType.CASUAL;
+	}
+	
 	public int howMany()
 	{
 		int maxTools = Math.min(store.getInventory().size(), MAX_RENTALS - getNumToolsRented());
