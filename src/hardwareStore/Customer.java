@@ -97,10 +97,13 @@ public abstract class Customer implements Observer
 	
 	
 	/**
+	 * TEMPLATE PATTERN - Each customer will add tools to an order, add options to the tools, and rent for a certain amount of time
+	 * how many tools and how long they will rent the tools changes depending on the type of customer.
 	 * Creates a Rental Record with the items and options that the customer rents.
 	 * @param currentDay The current day of the simulation
 	 * @return The generated Rental Record.
 	 */
+	
 	protected final RentalRecord generateRental(int currentDay)
 	{
 		
