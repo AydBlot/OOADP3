@@ -114,10 +114,12 @@ public class RentalRecord
 		printString = printString.substring(0, printString.length() - 2);
 		
 		// Options
-		printString += " with Options ";
-		for (RentalOption option : this.options)
-		{
-			printString += option.getDescription() + ", "; 
+		if(this.options.size() != 0) {
+			printString += " with Options ";
+			for (RentalOption option : this.options)
+			{
+				printString += option.getDescription() + ", "; 
+			}
 		}
 		
 		// Total Cost
