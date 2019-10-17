@@ -61,16 +61,16 @@ public class Main
 		Customer hughjass = new CasualCustomer("Hugh Jass", theStore);
 		aWholeNewWorld.addCustomer(hughjass);
 		
-		Customer willieStroker = new CasualCustomer("Willie Stoker", theStore);
+		Customer willieStroker = new CasualCustomer("Willie Stroker", theStore);
 		aWholeNewWorld.addCustomer(willieStroker);
 		
 		Customer bendover = new BusinessCustomer("Ben Dover", theStore);
 		aWholeNewWorld.addCustomer(bendover);
 		
-		Customer ericshun = new BusinessCustomer("Eric Shun", theStore);
+		Customer jacksmith = new BusinessCustomer("Jack Smith", theStore);
 		aWholeNewWorld.addCustomer(ericshun);
 		
-		Customer jackknauf = new BusinessCustomer("Jack Knauf", theStore);
+		Customer neildown = new BusinessCustomer("Neil Down", theStore);
 		aWholeNewWorld.addCustomer(jackknauf);
 				
 		// Run the simulation for 35 days
