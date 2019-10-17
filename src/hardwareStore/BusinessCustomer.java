@@ -12,6 +12,10 @@ public class BusinessCustomer extends Customer
 	{
 		super(name,store);
 	}
+	
+	public int getType() {
+		return CustomerType.BUSINESS;
+	}
 
 	protected boolean canRent()
 	{
