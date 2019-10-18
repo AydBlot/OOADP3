@@ -182,7 +182,6 @@ public abstract class Customer implements Observer
      */
     private void returnTools(RentalRecord record)
     {
-    	int toolsRented = record.getRentedTools().size();
 		store.processReturn(record);
     }
     
