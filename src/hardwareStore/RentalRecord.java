@@ -68,6 +68,14 @@ public class RentalRecord
 	}
 	
 	/**
+	 * @return The options added to the rental.
+	 */
+	public ArrayList<RentalOption> getOptions()
+	{
+		return this.options;
+	}
+	
+	/**
 	 * @return The total cost of the rental record.
 	 */
 	public int getCost()
