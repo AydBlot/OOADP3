@@ -4,13 +4,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class TestWorld {
+class TestWorld
+{
 	World hitchhikersWorld = World.getTheWorld();
 	Store hardwareStore = new Store("The Hard Store");
 	Customer newCustomer = new CasualCustomer("Steve", hardwareStore);
 	
 	@Test
-	void testAddCustomer() {
+	void testAddCustomer()
+	{
 		
 		//Test adding one customer
 		hitchhikersWorld.addCustomer(newCustomer);
@@ -29,7 +31,8 @@ class TestWorld {
 	
 	//Ensure the world can add a store properly
 	@Test
-	void testAddStore() {
+	void testAddStore()
+	{
 		hitchhikersWorld.addStore(hardwareStore);
 		
 		assertEquals(hitchhikersWorld.getStores().size(), 1);
@@ -37,7 +40,8 @@ class TestWorld {
 
 	//Ensure the world is able to increment the days properly
 	@Test
-	void testCurrentDays() {
+	void testCurrentDays()
+	{
 		hitchhikersWorld.startNewDay();
 		
 		assertEquals(hitchhikersWorld.getStagedDay(), 2);
@@ -45,7 +49,8 @@ class TestWorld {
 	
 	//Ensure the world is able to increment the days properly
 	@Test
-	void testRunSimulation() {
+	void testRunSimulation()
+	{
 		hitchhikersWorld.runSimulation(4);
 		
 		// At the start of the 6th day, but have yet to perform the actions of that day.

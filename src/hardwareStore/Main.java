@@ -103,32 +103,32 @@ public class Main
 		Customer larryGoogle = new BusinessCustomer("Laurence Google", theStore);
 		aWholeNewWorld.addCustomer(larryGoogle);
 		
-		Customer trumanburbank = new RegularCustomer("Truman Burbank", theStore);
-		aWholeNewWorld.addCustomer(trumanburbank);
+		Customer trumanBurbank = new RegularCustomer("Truman Burbank", theStore);
+		aWholeNewWorld.addCustomer(trumanBurbank);
 		
-		Customer amalikyoaz = new RegularCustomer("Amalik Yoaz", theStore);
-		aWholeNewWorld.addCustomer(amalikyoaz);
+		Customer marcusFacebook = new RegularCustomer("Marcus Facebook", theStore);
+		aWholeNewWorld.addCustomer(marcusFacebook);
 		
 		Customer frankNStein = new RegularCustomer("Frank N Stein", theStore);
 		aWholeNewWorld.addCustomer(frankNStein);
 		
-		Customer mikerotch = new CasualCustomer("Mike Rotch", theStore);
-		aWholeNewWorld.addCustomer(mikerotch);
+		Customer michaelRotch = new CasualCustomer("Michael Rotch", theStore);
+		aWholeNewWorld.addCustomer(michaelRotch);
 		
-		Customer hughjass = new CasualCustomer("Hugh Jass", theStore);
-		aWholeNewWorld.addCustomer(hughjass);
+		Customer hughJassman = new CasualCustomer("Hugh Jassman", theStore);
+		aWholeNewWorld.addCustomer(hughJassman);
 		
-		Customer willieStroker = new CasualCustomer("Willie Stroker", theStore);
-		aWholeNewWorld.addCustomer(willieStroker);
+		Customer williamStroker = new CasualCustomer("William Stroker", theStore);
+		aWholeNewWorld.addCustomer(williamStroker);
 		
-		Customer bendover = new BusinessCustomer("Ben Dover", theStore);
-		aWholeNewWorld.addCustomer(bendover);
+		Customer benjaminDover = new BusinessCustomer("Benjamin Dover", theStore);
+		aWholeNewWorld.addCustomer(benjaminDover);
 		
-		Customer jacksmith = new BusinessCustomer("Jack Smith", theStore);
-		aWholeNewWorld.addCustomer(jacksmith);
+		Customer jackSmith = new BusinessCustomer("Jack Smith", theStore);
+		aWholeNewWorld.addCustomer(jackSmith);
 		
-		Customer neildown = new BusinessCustomer("Neil Down", theStore);
-		aWholeNewWorld.addCustomer(neildown);
+		Customer neilDown = new BusinessCustomer("Neil Down", theStore);
+		aWholeNewWorld.addCustomer(neilDown);
 				
 		// Run the simulation for 35 days
 		aWholeNewWorld.runSimulation(35);

@@ -222,36 +222,42 @@ public class Store extends Observable
 		int completedRentals = 0;
 		for(RentalRecord rec : archivedRentals) 
 		{
-			if(rec.getCustomer().getType() == CustomerType.BUSINESS) {
-				businessRentals = businessRentals + 1;
+			if(rec.getCustomer().getType() == CustomerType.BUSINESS)
+			{
+				businessRentals++;
 			}
-			else if(rec.getCustomer().getType() == CustomerType.CASUAL) {
-				casualRentals = casualRentals + 1;
+			else if(rec.getCustomer().getType() == CustomerType.CASUAL)
+			{
+				casualRentals++;
 			}
-			else {
+			else 
+			{
 				regularRentals = regularRentals + 1;				
 			}
-			completedRentals = completedRentals + 1;
+			completedRentals++;
 		}
 		
 		for(RentalRecord rec : activeRentals)
 		{
-			if(rec.getCustomer().getType() == CustomerType.BUSINESS) {
-				businessRentals = businessRentals + 1;
+			if(rec.getCustomer().getType() == CustomerType.BUSINESS)
+			{
+				businessRentals++;
 			}
-			else if(rec.getCustomer().getType() == CustomerType.CASUAL) {
-				casualRentals = casualRentals + 1;
+			else if(rec.getCustomer().getType() == CustomerType.CASUAL)
+			{
+				casualRentals++;
 			}
-			else {
-				regularRentals = regularRentals + 1;				
+			else
+			{
+				regularRentals++;				
 			}
-			completedRentals = completedRentals + 1;
+			
+			completedRentals++;
 		}
 		
 		System.out.println("Total number of completed rentals: " + completedRentals);
 		System.out.println("The business customers had: " + businessRentals + " rentals");
 		System.out.println("The regular customers had: " + regularRentals + " rentals");
 		System.out.println("The casual customers had: " + casualRentals + " rentals");
-		
 	}
 }
